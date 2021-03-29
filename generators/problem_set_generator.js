@@ -13,7 +13,7 @@
     ** Later - Add capacity to generate problems with negative numbers, add the possibility of not placing the larger number
     at the front of each problem array
 
-    *** Function is designed to work with decDigits > 0 for addition & subtraction, but decDigits should equal 0 for multiplication & division
+    *** Function is designed to work with decDigits > 0 for addition, subtraction, & multiplication; but decDigits should equal 0 for division
     due to introduction of overcomplexity from significant figures (outside the scope of arithmetic lessons)
 */
 function problem_set_generator(setNum, min, max, decDigits, operation) {
@@ -25,8 +25,8 @@ function problem_set_generator(setNum, min, max, decDigits, operation) {
     var counter = 0;
 
     // Error: function not designed for these parameters
-    if((decDigits > 0) && (operation == 'multiplication' || operation == 'division')) {
-        return 'Error: function is designed to only take decDigits equal to 0 for multiplication & division';
+    if((decDigits != 0) && operation == 'division') {
+        return 'Error: Outside scope - function is designed to only take decDigits equal to 0 for division';
     }
 
     max++; // Math.random's max value is normally exclusive, adding 1 will make it inclusive
@@ -35,12 +35,12 @@ function problem_set_generator(setNum, min, max, decDigits, operation) {
 
         problem = [];
 
-        // Integer portion of the generator
+        // ** Integer portion of the generator **
         // Generates each integer for the problem
         problem.push(Math.floor(Math.random() * (max - min) + min));
         problem.push(Math.floor(Math.random() * (max - min) + min));
 
-        // Decimal portion of the generator, amends integer portion with decimal portion
+        // ** Decimal portion of the generator **, amends integer portion with decimal portion
         if(decDigits > 0) {
             problem[0] = (problem[0] + parseFloat(Math.round(decimalBase * Math.random()) / decimalBase)).toFixed(decDigits);
             problem[1] = (problem[1] + parseFloat(Math.round(decimalBase * Math.random()) / decimalBase)).toFixed(decDigits);
@@ -105,8 +105,8 @@ function countDecimals(number){
 
 
 // Main
-var problemSet = problem_set_generator(25, 1, 250, 2, 'subtraction');
+var problemSet = problem_set_generator(25, 1, 250, 0, 'multiplication');
 
 for(let x = 0; x < problemSet.length; x++){
-    console.log(`${problemSet[x][0]} - ${problemSet[x][1]} = ${problemSet[x][2]}`);
+    console.log(`${problemSet[x][0]} * ${problemSet[x][1]} = ${problemSet[x][2]}`);
 }
