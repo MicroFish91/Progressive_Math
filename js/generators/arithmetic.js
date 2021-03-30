@@ -1,3 +1,5 @@
+import { countDecimals } from '../utils.js';
+
 /* 
     Arithmetic: Integer Problem Set Generator
     setNum (int): number of problem sets to generate
@@ -16,7 +18,7 @@
     *** Function is designed to work with decDigits > 0 for addition, subtraction, & multiplication; but decDigits should equal 0 for division
     due to introduction of overcomplexity from significant figures (outside the scope of arithmetic lessons)
 */
-function problem_set_generator(setNum, min, max, decDigits, operation) {
+export function arithmeticGenerator(setNum, min, max, decDigits, operation) {
 
     var problemSet = [];
     var problem = [];
@@ -89,23 +91,4 @@ function problem_set_generator(setNum, min, max, decDigits, operation) {
 
     return problemSet;
 
-}
-
-// Takes a number and counts its number of decimal digits
-function countDecimals(number){
-
-    if (Math.floor(number) === number){
-        return 0;
-    } else {
-        return number.toString().split(".")[1].length
-    }
-
-}
-
-
-// Main
-var problemSet = problem_set_generator(25, 1, 250, 0, 'multiplication');
-
-for(let x = 0; x < problemSet.length; x++){
-    console.log(`${problemSet[x][0]} * ${problemSet[x][1]} = ${problemSet[x][2]}`);
 }

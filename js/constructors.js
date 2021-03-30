@@ -1,4 +1,9 @@
-function content_card_constructor(){
+/* 
+    Takes 2 problem components (integers/floats converted to string) 
+    and constructs a problem on the page for the user to practice
+    (will appear as a box on the page with content e.g. 5 x 7 = [])
+*/
+export function contentCardConstructor(probCompOne, probCompTwo, probSolution, maxLength){
 
     var contentCard = document.createElement('div');
     var operandOne = document.createElement('div');
@@ -9,15 +14,17 @@ function content_card_constructor(){
     contentCard.className = 'content-card';
 
     operandOne.className = 'content-item';
-    operandOne.textContent = '9';
+    operandOne.textContent = probCompOne.toString();
 
     operandTwo.className = 'content-item';
     operandTwo.style = 'border-bottom: 2px solid black;';
-    operandTwo.textContent = 'x 5';
+    operandTwo.textContent = `x ${probCompTwo.toString()}`;
 
     solution.type = 'text';
     solution.name = 'solution';
     solution.className = 'content-solution';
+    solution.name = `${probCompOne} ${probCompTwo} ${probSolution}`;
+    solution.maxLength = maxLength;
 
     contentCard.appendChild(operandOne);
     contentCard.appendChild(operandTwo);
@@ -26,12 +33,3 @@ function content_card_constructor(){
     mainContentHook.prepend(contentCard);
 
 }
-
-content_card_constructor();
-
-// Add On-Click Event Listener to the submit-button
-document.querySelector('#submit-button').addEventListener("click", () => {
-
-    console.log('clicked');
-
-});
