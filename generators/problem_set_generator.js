@@ -91,7 +91,7 @@ function problem_set_generator(setNum, min, max, decDigits, operation) {
 
 }
 
-// Takes a float and counts its number of decimal digits
+// Takes a number and counts its number of decimal digits
 function countDecimals(number){
 
     if (Math.floor(number) === number){
@@ -101,7 +101,6 @@ function countDecimals(number){
     }
 
 }
-
 
 
 // Main
