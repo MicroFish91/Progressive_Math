@@ -95,3 +95,15 @@ footer {
     text-align: center;
     font-size: 2em;
 }
+
+.content-solution {
+    width: 50%;
+    height: 2em;
+    text-align: center;
+    font-size: 2em;
+}
+
+.content-submit {
+    width: 70%;
+    height: 50%;
+}
