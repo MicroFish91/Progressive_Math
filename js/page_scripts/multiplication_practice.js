@@ -1,5 +1,6 @@
 import { contentCardConstructor } from '../constructors.js';
 import { arithmeticGenerator } from '../generators/arithmetic.js';
+import { updateScore, updateWrongAnswers } from '../utils.js';
 
 var problemSet = arithmeticGenerator(19, 1, 9, 0, 'multiplication');
 var answerSet = [];
@@ -38,15 +39,10 @@ document.querySelector('#submit-button').addEventListener('click', () => {
     } 
 
     // Update Local Storage with new score and wrong answers
-   if(localStorage.getItem('multiplicationPracticeScore') == null){
-        localStorage.setItem('multiplicationPracticeScore', '0');
-   }
+    updateScore('multiplicationPracticeScore', wrongAnswers.length);
+    updateWrongAnswers('multiplicationPracticeWrongAnswers', wrongAnswers);
 
-   if(localStorage.getItem('multiplicationPracticeWrongAnswers') == null){
-    localStorage.setItem('multiplicationPracticeWrongAnswers', '');
-   }
-
-   
+    console.log(localStorage);
 
 });
 
