@@ -10,14 +10,14 @@ var wrongAnswers = [];
 
 // Set up problem fields
 problemSet.forEach((problem) => {
-
     contentCardConstructor(problem[0], problem[1], problem[2], problem[2].length);
-
 })
 
 
 // Add On-Click Event Listener to the submit-button
 document.querySelector('#submit-button').addEventListener('click', () => {
+
+    wrongAnswers = [];
 
     // Double check confirm with user
     if (confirm('Are you done answering all the questions?')) {
@@ -57,8 +57,9 @@ document.querySelector('#submit-button').addEventListener('click', () => {
             removeCardConstructor();
 
             // Set up problem fields again
+            problemSet = arithmeticGenerator(19, 1, 9, 0, 'multiplication');
+
             problemSet.forEach((problem) => {
-                problemSet = arithmeticGenerator(19, 1, 9, 0, 'multiplication');
                 contentCardConstructor(problem[0], problem[1], problem[2], problem[2].length);
             })
         }, 200); 
