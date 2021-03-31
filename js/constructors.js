@@ -33,3 +33,16 @@ export function contentCardConstructor(probCompOne, probCompTwo, probSolution, m
     mainContentHook.prepend(contentCard);
 
 }
+
+// Removes cards to refresh the practice round
+export function removeCardConstructor() {
+
+    var contentCard = document.querySelectorAll('.content-card');
+
+    for (let x = 0; x < 19; x++) {
+
+        contentCard[x].remove();
+
+    }
+
+}

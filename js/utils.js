@@ -24,10 +24,15 @@ export function updateScore(storageProperty, numberWrong) {
     newScore -= numberWrong * 5;
 
     // Tally points and add it to totalScore (cannot go below 0 points)
+    // Will not subtract more than 30 points per round
     if ((totalScore + newScore) < 0) {
         totalScore = 0;
     } else {
-        totalScore += newScore;
+        if (newScore < -30) {
+            totalScore -= 30;
+        } else {
+            totalScore += newScore;
+        }
     }
 
     localStorage.setItem(storageProperty, totalScore);
